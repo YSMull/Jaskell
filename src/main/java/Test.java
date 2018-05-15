@@ -4,6 +4,7 @@ public class Test {
 
 
     public static void main(String[] args) {
+
         Left<Integer> left = new Left<>(123);
         Right<String> right = new Right<>("hello");
         System.out.println(left); // Left 123
