@@ -6,14 +6,6 @@ class Right<R> {
         value = rVal;
     }
 
-    public Right<R> getRight() {
-        return this;
-    }
-
-    public Left getLeft() {
-        return null;
-    }
-
     @Override
     public String toString() {
         return "Right " + value;

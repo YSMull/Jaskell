@@ -9,9 +9,6 @@ public class Either<L, R> {
     private Left<L> left;
     private Right<R> right;
 
-    public Either() {
-    }
-
     Either(Left<L> lVal, Right<R> rVal) {
         left = lVal;
         right = rVal;
@@ -33,7 +30,7 @@ public class Either<L, R> {
         return left;
     }
 
-    public static boolean isLeft(Left<?> left) {
+    public static boolean isLeft(Left<?> __) {
         return true;
     }
 
@@ -45,7 +42,7 @@ public class Either<L, R> {
         return either.getLeft() != null;
     }
 
-    public static boolean isRight(Right<?> right) {
+    public static boolean isRight(Right<?> __) {
         return true;
     }
 
@@ -100,11 +97,11 @@ public class Either<L, R> {
     }
 
     public static <L, R, U> U either(Function<L, U> f1, Function<R, U> __, Left<L> left) {
-        return f1.apply(left.getLeft().value);
+        return f1.apply(left.value);
     }
 
     public static <L, R, U> U either(Function<L, U> __, Function<R, U> f2, Right<R> right) {
-        return f2.apply(right.getRight().value);
+        return f2.apply(right.value);
     }
 
     public static <R, L, U> U either(Function<L, U> f1, Function<R, U> f2, Either<L, R> either) {
