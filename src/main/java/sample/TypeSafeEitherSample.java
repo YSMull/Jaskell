@@ -1,4 +1,8 @@
-import java.util.Arrays;
+package sample;
+
+import datatype.Either;
+import datatype.Left;
+import datatype.Right;
 
 public class TypeSafeEitherSample {
 
@@ -20,9 +24,9 @@ public class TypeSafeEitherSample {
         System.out.println(Either.fromRight("world", left)); // "world"
         System.out.println(Either.fromRight("world", right)); // "hello"
 
-        Integer doubleLeft =  Either.either(((Integer n) -> 2 * n), String::length, new Left<>(123));
+        Integer doubleLeft = Either.either(((Integer n) -> 2 * n), String::length, new Left<>(123));
         System.out.println(doubleLeft); // 246
-        Integer lengthRight = Either.either(((Integer n) -> 2*n), String::length, new Right<>("hello"));
+        Integer lengthRight = Either.either(((Integer n) -> 2 * n), String::length, new Right<>("hello"));
         System.out.println(lengthRight); // 5
 
         System.out.println(test(1)); // Left 123

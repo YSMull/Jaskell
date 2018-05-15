@@ -1,8 +1,10 @@
-class Right<R> {
+package datatype;
+
+public class Right<R> {
 
     public R value;
 
-    Right(R rVal) {
+    public Right(R rVal) {
         value = rVal;
     }
 

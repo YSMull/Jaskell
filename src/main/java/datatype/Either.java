@@ -1,3 +1,5 @@
+package datatype;
+
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
@@ -9,16 +11,18 @@ public class Either<L, R> {
     private Left<L> left;
     private Right<R> right;
 
-    Either(Left<L> lVal, Right<R> rVal) {
+    public Either(Left<L> lVal, Right<R> rVal) {
         left = lVal;
         right = rVal;
     }
 
-    Either(Left<L> lVal) {
+    public Either(Left<L> lVal) {
         left = lVal;
+        right = new Right<>(null);
     }
 
-    Either(Right<R> rVal) {
+    public Either(Right<R> rVal) {
+        left = new Left<>(null);
         right = rVal;
     }
 
@@ -104,7 +108,7 @@ public class Either<L, R> {
         return f2.apply(right.value);
     }
 
-    public static <R, L, U> U either(Function<L, U> f1, Function<R, U> f2, Either<L, R> either) {
+    public static <L, R, U> U either(Function<L, U> f1, Function<R, U> f2, Either<L, R> either) {
         if (isLeft(either)) {
             return f1.apply(either.getLeft().value);
         } else {

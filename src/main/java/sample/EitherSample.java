@@ -1,3 +1,9 @@
+package sample;
+
+import datatype.Either;
+import datatype.Left;
+import datatype.Right;
+
 import java.util.Arrays;
 
 public class EitherSample {
@@ -39,7 +45,7 @@ public class EitherSample {
         System.out.println(Either.fromRight("world", right)); // "hello"
 
         System.out.println(Either.fromLeft(456, new Either<>(left))); // 123
-        System.out.println(Either.fromLeft(456, new Either<>(right))); // 456
+        System.out.println(Either.fromLeft("123", new Either<Object, String>(right))); // 456
         System.out.println(Either.fromRight("world", new Either<>(left))); // "world"
         System.out.println(Either.fromRight("world", new Either<>(right))); // "hello"
 

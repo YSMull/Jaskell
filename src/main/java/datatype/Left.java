@@ -1,8 +1,10 @@
-class Left<L> {
+package datatype;
+
+public class Left<L> {
 
     public L value;
 
-    Left(L lVal) {
+    public Left(L lVal) {
         value = lVal;
     }
 
