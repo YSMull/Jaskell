@@ -19,7 +19,12 @@ public class Test {
         System.out.println(Either.isLeft(left)); // true
         System.out.println(Either.isLeft(right)); // false
         System.out.println(Either.isRight(left)); // false
-        System.out.println(Either.isRight(right)); // right
+        System.out.println(Either.isRight(right)); // true
+
+        System.out.println(Either.isLeft(new Either<>(left))); // true
+        System.out.println(Either.isLeft(new Either<>(right))); // false
+        System.out.println(Either.isRight(new Either<>(left))); // false
+        System.out.println(Either.isRight(new Either<>(right))); // true
 
 
 
@@ -27,7 +32,7 @@ public class Test {
         // fromLeft :: a -> Either a b -> a
         // fromRight :: b -> Either a b -> b
 
-        System.out.println(Either.fromLeft(123, new Either<>(left))); // 123
+        System.out.println(Either.fromLeft(456, new Either<>(left))); // 123
         System.out.println(Either.fromLeft(456, new Either<>(right))); // 456
         System.out.println(Either.fromLeft(456, left)); // 123
         System.out.println(Either.fromLeft(456, right)); // 456
@@ -38,6 +43,22 @@ public class Test {
         System.out.println(Either.fromRight("world", right)); // "hello"
 
 
+        // test either
+        // either :: (a -> c) -> (b -> c) -> Either a b -> c
+
+        Integer doubleLeft =  Either.either(((Integer n) -> 2 * n), String::length, new Left<>(123));
+        System.out.println(doubleLeft); // 246
+        Integer lengthRight = Either.either(((Integer n) -> 2*n), String::length, new Right<>("hello"));
+        System.out.println(lengthRight); // 5
+
+
+        // test functions return type
+
+        System.out.println(test(1)); // Left 123
+        System.out.println(test(-1)); // Right Hello
+
+
+        // not type safe
         // test lefts & rights
         // lefts :: [Either a b] -> [a]
         // rights :: [Either a b] -> [b]
@@ -55,22 +76,6 @@ public class Test {
 
         String[] rights = Either.rights(eithers, String.class);
         System.out.println(Arrays.toString(rights)); // ["hello", "world"]
-
-
-
-        // test either
-        // either :: (a -> c) -> (b -> c) -> Either a b -> c
-
-        Integer doubleLeft =  Either.either(((Integer n) -> 2 * n), String::length, new Left<>(123));
-        System.out.println(doubleLeft); // 246
-        Integer lengthRight = Either.either(((Integer n) -> 2*n), String::length, new Right<>("hello"));
-        System.out.println(lengthRight); // 5
-
-
-        // test functions return type
-
-        System.out.println(test(1)); // Left 123
-        System.out.println(test(-1)); // Right Hello
     }
 
     public static Either<Integer, String> test(int a) {
