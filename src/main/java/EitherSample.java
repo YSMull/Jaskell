@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Test {
+public class EitherSample {
 
 
     public static void main(String[] args) {
@@ -33,15 +33,15 @@ public class Test {
         // fromLeft :: a -> Either a b -> a
         // fromRight :: b -> Either a b -> b
 
-        System.out.println(Either.fromLeft(456, new Either<>(left))); // 123
-        System.out.println(Either.fromLeft(456, new Either<>(right))); // 456
         System.out.println(Either.fromLeft(456, left)); // 123
         System.out.println(Either.fromLeft(456, right)); // 456
-
-        System.out.println(Either.fromRight("world", new Either<>(left))); // "world"
-        System.out.println(Either.fromRight("world", new Either<>(right))); // "hello"
         System.out.println(Either.fromRight("world", left)); // "world"
         System.out.println(Either.fromRight("world", right)); // "hello"
+
+        System.out.println(Either.fromLeft(456, new Either<>(left))); // 123
+        System.out.println(Either.fromLeft(456, new Either<>(right))); // 456
+        System.out.println(Either.fromRight("world", new Either<>(left))); // "world"
+        System.out.println(Either.fromRight("world", new Either<>(right))); // "hello"
 
 
         // test either

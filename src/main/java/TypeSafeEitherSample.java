@@ -2,7 +2,6 @@ import java.util.Arrays;
 
 public class TypeSafeEitherSample {
 
-
     public static void main(String[] args) {
 
         Left<Integer> left = new Left<>(123);
